@@ -39,5 +39,5 @@ func (s *SkipString) TransformRune(pos int) {
 }
 
 func (s SkipString) String() string {
-	return fmt.Sprintf("String with every %v characters capitalized: %v", s.skipChar, s.skipIndex)
+	return fmt.Sprintf("String with every %v characters capitalized: %v", s.skipChar, s.str)
 }
