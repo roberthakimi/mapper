@@ -5,6 +5,8 @@ import (
 	"regexp"
 	"strings"
 	"unicode"
+
+	"github.com/mapper_string/mapper"
 )
 
 const expected = "asPirAtiOn.cOm"
@@ -24,18 +26,6 @@ func main() {
 
 }
 
-type SkipString struct {
-	skipPosition int
-	str          string
-}
-
-func NewSkipString(pos int, str string) SkipString {
-	return SkipString{
-		skipPosition: pos,
-		str:          str,
-	}
-}
-
 func CapitalizeEveryThirdAlphanumericChar(s string) string {
 	lowercase := strings.ToLower(s)
 
@@ -46,7 +36,7 @@ func CapitalizeEveryThirdAlphanumericChar(s string) string {
 	index := 0
 	for i, char := range runes {
 		if regexp.MustCompile(`[a-zA-Z0-9]`).MatchString(string(char)) {
-			if index%3 == 2 {
+			if (index+1)%3 == 0 {
 				upper := unicode.ToUpper(runes[i])
 				runes[i] = upper
 			}
